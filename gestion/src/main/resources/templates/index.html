@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Gestión Academica</title>
+  <th:block th:replace="~{fragmentos/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div th:replace="~{fragmentos/general.html :: navigation}"> </div>
+
+    <div class="container">
+      <div class="card m-4" style="width: 25rem;">
+        <h1>Gestión Academica</h1>
+        <p class="card-text">Bienvenido a Gestión Academica.</p>
+        <a sec:authorize="isAnonymous()"  href="/login" class="btn btn-primary">Inicia Sesión</a>
+      </div>
+    </div>
+    <div th:replace="~{fragmentos/general.html :: footer}"></div>
+  </div>
+</body>
+
+</html>

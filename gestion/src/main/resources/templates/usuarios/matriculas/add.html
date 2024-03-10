@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>Gestión de matrículas</title>
+  <th:block th:replace="~{fragmentos/general.html :: headerfiles}"></th:block>
+</head>
+
+<body>
+    <div th:replace="~{fragmentos/general.html :: navigation}"> </div>
+    <div class="container m-3">
+        <form class="row"
+            th:object="${matricula}"
+            method="post">
+
+            <div class="form-control">
+                <label for="asignatura_actual">Selección de la asignatura a matricular:</label>
+                <select class="form-select" id="seleccion">
+                    <option 
+                        th:each="asignaturas : ${asignaturas}"
+                        th:value="${asignaturas.id}"
+                        th:text="|${asignaturas.nombre} ${asignaturas.ciclo} ${asignaturas.curso}|"
+                        th:selected="(${asignaturas.id} == ${asignatura_actual.id})?'selected':'false'"
+                    >
+                    </option>
+                </select>
+            </div>
+            <input type="hidden" th:field="${matricula.asignatura.id}" th:value="${asignatura_actual.id}" />
+
+            <div>
+                <button class="btn btn-success mt-3" type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div th:replace="fragmentos/general.html :: footer"></div>
+</div>
+</body>
+
+</html>
